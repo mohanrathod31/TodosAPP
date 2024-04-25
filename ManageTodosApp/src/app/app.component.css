@@ -1,0 +1,41 @@
+  
+      .star {
+        color: red;
+      }
+  
+      .validation-messages {
+        margin-top: 10px;
+      }
+  
+      .validation-messages li {
+        list-style-type: none;
+      }
+
+      .custom-width {
+        width: 160px; /* Adjust the width as needed */
+    }
+
+    .width-task {
+        width: 470px; /* Adjust the width as needed */
+    }
+  
+  .container-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%; /* Set width to cover 70% of the webpage */
+    height: 70vh; /* Set height to cover 70% of the viewport height */
+    max-width: 800px; /* Limit maximum width */
+    max-height: 600px; /* Limit maximum height */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .overdue {
+    background-color: red; /* Background color for overdue tasks */
+    color: white; /* Text color for overdue tasks */
+  }
+
