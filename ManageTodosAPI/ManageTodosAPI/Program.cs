@@ -1,5 +1,7 @@
 using ManageTodosAPI.Data;
+using ManageTodosAPI.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +11,25 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<ITodosService, TodosService>();
+
 builder.Services.AddDbContext<DataContext>(options =>
-options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnect")));
+options.UseInMemoryDatabase(builder.Configuration.GetConnectionString("ConnectionString"))
+);
+
+// Configure CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:4200")
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
+
+
 
 var app = builder.Build();
 
