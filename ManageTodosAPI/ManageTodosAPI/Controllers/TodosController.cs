@@ -25,6 +25,21 @@ namespace ManageTodosAPI.Controllers
             return Ok(todos);
         }
 
+        [HttpGet("incomplete")]
+        public async Task<ActionResult<IEnumerable<Todo>>> GetAllIncompleteTodos()
+        {
+           var incompleteTodos = await _todoService.GetAllIncompleteTodos();
+            return Ok(incompleteTodos);
+        }
+
+        [HttpGet("completed")]
+        public async Task<ActionResult<IEnumerable<Todo>>> GetAllCompletedTodos()
+        {
+            var completedTodos = await _todoService.GetAllCompletedTodos();
+            return Ok(completedTodos);
+        }
+
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Todo>> GetTodoById(int id)
         {

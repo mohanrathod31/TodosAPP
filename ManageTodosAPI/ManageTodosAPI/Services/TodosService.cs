@@ -44,5 +44,15 @@ namespace ManageTodosAPI.Services
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task<IEnumerable<Todo>> GetAllIncompleteTodos()
+        {
+            return await _context.Todos.Where(todo => !todo.IsCompleted).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Todo>> GetAllCompletedTodos()
+        {
+            return await _context.Todos.Where(todo => todo.IsCompleted).ToListAsync();
+        }
     }
 }

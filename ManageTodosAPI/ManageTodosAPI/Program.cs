@@ -44,6 +44,9 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+// Apply CORS middleware
+app.UseCors("AllowOrigin");
+
 app.MapControllers();
 
 app.Run();

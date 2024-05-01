@@ -13,5 +13,9 @@ namespace ManageTodosAPI.Services
         Task UpdateTodo(Todo todo);
 
         Task DeleteTodo(int id);
+
+        Task<IEnumerable<Todo>> GetAllIncompleteTodos();
+
+        Task<IEnumerable<Todo>> GetAllCompletedTodos();
     }
 }
