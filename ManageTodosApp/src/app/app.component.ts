@@ -20,10 +20,10 @@ export class AppComponent implements OnInit {
       newDeadline: ['', Validators.required]
     });
 
-    this.loadTodos();
+    this.getAllTodos();
   }
 
-  loadTodos() {
+  getAllTodos() {
     this.todosService.getAllTodos().subscribe(
       todos => {
         this.todos = todos;
@@ -96,4 +96,27 @@ export class AppComponent implements OnInit {
     const now = new Date().getTime();
     return deadlineTime < now;
   }
+
+  getActiveTodos(){
+    this.todosService.getActiveTodos().subscribe(
+      todos => {
+        this.todos = todos;
+      },
+      error => {
+        console.error('Error fetching todos:', error);
+      }
+    );
+  }
+
+  getCompletedTodos(){
+    this.todosService.getCompletedTodos().subscribe(
+      todos => {
+        this.todos = todos;
+      },
+      error => {
+        console.error('Error fetching todos:', error);
+      }
+    );
+  }
+
 }

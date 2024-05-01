@@ -52,16 +52,16 @@
             </thead>
             <tbody>
               <tr *ngFor="let todo of todos; let i = index" [ngClass]="{ 'overdue': isOverdue(todo) }">
-                <td>{{ todo.text }}</td>
+                <td>{{ todo.task }}</td>
                 <td>{{ todo.deadline | date }}</td>
-                <td [ngClass]="{'completed': todo.completed}">
-                  {{ todo.completed ? 'Done' : 'Pending' }}
+                <td [ngClass]="{'completed': todo.isCompleted}">
+                  {{ todo.isCompleted ? 'Done' : 'Pending' }}
                 </td>
                 <td>
-                  <button class="btn btn-primary" (click)="markTodo(i)">
+                  <button class="btn btn-primary" (click)="markTodo(todo)">
                     {{ isMarkingCompleted ? 'Mark Completed' : 'Mark Incomplete' }}
                   </button>
-                  <button class="btn btn-sm btn-outline-danger" (click)="deleteTodo(i)">Delete</button>
+                  <button class="btn btn-sm btn-outline-danger" (click)="deleteTodo(todo)">Delete</button>
                 </td>
               </tr>
             </tbody>
@@ -73,10 +73,10 @@
           <span>{{ todos.length }} items left</span>
         </div>
         <div class="col-md-6 d-flex justify-content-end">
-          <button class="btn btn-sm btn-outline-primary mr-2">All</button>
-          <button class="btn btn-sm btn-outline-primary mr-2">Active</button>
-          <button class="btn btn-sm btn-outline-primary">Completed</button>
-      </div>
+          <button class="btn btn-sm btn-outline-primary mr-2" (click)="getAllTodos()">All</button>
+          <button class="btn btn-sm btn-outline-primary mr-2" (click)="getActiveTodos()">Active</button>
+          <button class="btn btn-sm btn-outline-primary" (click)="getCompletedTodos()">Completed</button>
+        </div>
       </div>
     </div>
   </div>
